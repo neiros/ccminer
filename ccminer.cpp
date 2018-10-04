@@ -268,6 +268,7 @@ Options:\n\
 			luffa       Joincoin\n\
 			lyra2       CryptoCoin\n\
 			lyra2v2     VertCoin\n\
+            lyra2TDC    TDCoin\n\
 			lyra2z      ZeroCoin (3rd impl)\n\
 			myr-gr      Myriad-Groestl\n\
 			monero      XMR cryptonight (v7)\n\
@@ -1738,6 +1739,7 @@ static bool stratum_gen_work(struct stratum_ctx *sctx, struct work *work)
 		case ALGO_KECCAKC:
 		case ALGO_LBRY:
 		case ALGO_LYRA2v2:
+        case ALGO_LYRA2TDC:
 		case ALGO_LYRA2Z:
 		case ALGO_PHI2:
 		case ALGO_TIMETRAVEL:
@@ -2276,6 +2278,7 @@ static void *miner_thread(void *userdata)
 			case ALGO_JHA:
 			case ALGO_HSR:
 			case ALGO_LYRA2v2:
+            case ALGO_LYRA2TDC:
 			case ALGO_PHI:
 			case ALGO_PHI2:
 			case ALGO_POLYTIMOS:
@@ -2460,6 +2463,9 @@ static void *miner_thread(void *userdata)
 		case ALGO_LYRA2v2:
 			rc = scanhash_lyra2v2(thr_id, &work, max_nonce, &hashes_done);
 			break;
+        case ALGO_LYRA2TDC:
+            rc = scanhash_lyra2TDC(thr_id, &work, max_nonce, &hashes_done);
+            break;
 		case ALGO_LYRA2Z:
 			rc = scanhash_lyra2Z(thr_id, &work, max_nonce, &hashes_done);
 			break;

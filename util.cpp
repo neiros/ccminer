@@ -2243,6 +2243,9 @@ void print_hash_tests(void)
 	lyra2v2_hash(&hash[0], &buf[0]);
 	printpfx("lyra2v2", hash);
 
+    lyra2TDC_hash(&hash[0], &buf[0]);
+    printpfx("lyra2TDC", hash);
+
 	lyra2Z_hash(&hash[0], &buf[0]);
 	printpfx("lyra2z", hash);
 
